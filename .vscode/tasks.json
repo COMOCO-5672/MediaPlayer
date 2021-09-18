@@ -1,0 +1,34 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+
+		{
+			"label": "MediaPlayer Debug",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"${workspaceRoot}/build_debug.cmd",
+				"debug"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "MediaPlayer Release",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"${workspaceRoot}/build_release.cmd",
+				"release"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
