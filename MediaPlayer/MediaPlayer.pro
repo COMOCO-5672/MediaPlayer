@@ -25,10 +25,12 @@ include(../Dependency/ffmpeg-n4.3-19/ffmpeg.pri)
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    openglrenderwidget.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h    \
+    openglrenderwidget.h
 
 FORMS += \
     mainwindow.ui
