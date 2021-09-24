@@ -121,3 +121,8 @@ void OpenGLRenderWidget::render(uchar *py, uchar *puv, int w, int h)
     program.disableAttributeArray("textureIn");
     program.release();
 }
+
+void OpenGLRenderWidget::closeEvent(QCloseEvent *event)
+{
+    emit widget_exit();
+}

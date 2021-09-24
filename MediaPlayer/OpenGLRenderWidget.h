@@ -1,5 +1,5 @@
-#ifndef MEDIAPLAY_OPENGLRENDER_H__
-#define MEDIAPLAY_OPENGLRENDER_H__
+#ifndef MEDIAPLAY_OPENGLRENDER_H_
+#define MEDIAPLAY_OPENGLRENDER_H_
 
 #include "QOpenGLBuffer"
 #include "QOpenGLFunctions"
@@ -12,7 +12,7 @@ class OpenGLRenderWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 public:
-    explicit OpenGLRenderWidget(QWidget *parent = nullptr);
+    OpenGLRenderWidget(QWidget *parent = nullptr);
     ~OpenGLRenderWidget();
 
     void render(uchar *py, uchar *puv, int w, int h);

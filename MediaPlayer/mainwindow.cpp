@@ -13,5 +13,9 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_pushButton_clicked()
 {
+    auto text= ui->lineEdit->text().trimmed();
+    if(text.isEmpty())
+        return;
+    // start play rtsp
     
 }
