@@ -11,11 +11,11 @@ CONFIG(debug, debug|release) {
     build_type = release
 }
 
-DESTDIR     = $$build_type/../bin/out
-OBJECTS_DIR = $$build_type/../bin/obj
-MOC_DIR     = $$build_type/../bin/moc
-RCC_DIR     = $$build_type/../bin/rcc
-UI_DIR      = $$build_type/../bin/ui
+DESTDIR     = $$build_type/bin/out
+OBJECTS_DIR = $$build_type/bin/obj
+MOC_DIR     = $$build_type/bin/moc
+RCC_DIR     = $$build_type/bin/rcc
+UI_DIR      = $$build_type/bin/ui
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.

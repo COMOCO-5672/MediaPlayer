@@ -3,12 +3,12 @@
     // 悬停以查看现有属性的描述。
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
+    "configurations":  [
         {
             "name": "CDBDebug",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/bin/MediaPlayer/debug/out/MediaPlayer.exe",
+            "program": "${workspaceRoot}/bin/MediaPlayer/debug/bin/out/MediaPlayer.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -20,7 +20,7 @@
             "name": "CDBRelease",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/bin/MediaPlayer/release/out/MediaPlayer.exe",
+            "program": "${workspaceRoot}/bin/MediaPlayer/release/bin/out/MediaPlayer.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

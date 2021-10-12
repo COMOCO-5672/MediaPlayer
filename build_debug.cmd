@@ -8,7 +8,7 @@ md bin
 cd bin
 qmake ../MediaPlayer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" 
 nmake
-cd MediaPlayer/debug/out
+cd MediaPlayer/debug/bin/out
 @REM set type = %~1
 @REM if "%type%"=="debug" (
 @REM     @echo come in debug1
