@@ -10,7 +10,7 @@ stream_base::~stream_base()
 
 bool stream_base::open(AVFormatContext *avFmt)
 {
-    if (!openImpl(avFmt))
+    if (!open_impl(avFmt))
         return false;
     return true;
 }
