@@ -1,3 +1,6 @@
+#ifndef STREAM_BASE_H
+#define STREAM_BASE_H
+
 #include <string>
 #include "ffmpeg_util.h"
 
@@ -20,3 +23,4 @@ protected:
 
     virtual bool stop_impl() = 0;
 };
+#endif

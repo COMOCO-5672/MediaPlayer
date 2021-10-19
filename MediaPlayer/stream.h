@@ -1,3 +1,6 @@
+#ifndef STREAM_H
+#define STREAM_H
+
 #include "stream_base.h"
 
 class stream
@@ -10,3 +13,4 @@ public:
 
     bool openByUrl(const std::string url);
 };
+#endif

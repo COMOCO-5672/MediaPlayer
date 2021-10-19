@@ -29,7 +29,7 @@ SOURCES += \
     mainwindow.cpp \
     openglrenderwidget.cpp  \
     stream_base.cpp \
-    stream_nomal.cpp    \
+    stream_normal.cpp    \
     stream.cpp
 
 HEADERS += \
@@ -37,7 +37,7 @@ HEADERS += \
     mainwindow.h    \
     openglrenderwidget.h    \
     stream_base.h   \
-    stream_nomal.h  \
+    stream_normal.h  \
     stream.h
 
 FORMS += \

@@ -79,5 +79,5 @@ bool decoder::start()
     // Output info
     printf("-----------file informattion----------\n");
     av_dump_format(pFormatCtx,0,0,0);
-
+    return false;
 }
