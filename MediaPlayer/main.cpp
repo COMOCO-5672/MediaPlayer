@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDebug>
+#include <QGuiApplication>
 
 int main(int argc, char *argv[])
 {
@@ -77,15 +78,13 @@ int main(int argc, char *argv[])
     if (0 > width || 0 > height)
     {
         fprintf(stderr, "%s\n", qPrintable(QGuiApplication::translate("main", "Error: Invalid format argument. "
-                                                                              "Width and height must be greater than 0.")));
+                                                                               "Width and height must be greater than 0.")));
         parser.showHelp(1);
     }
     int x = parser.value(xOption).toInt();
     int y = parser.value(yOption).toInt();
     qDebug() << "end";
     QString color = parser.value(colorOption);
-
-    return 0;
 
     MainWindow w;
     w.show();
