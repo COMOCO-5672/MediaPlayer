@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations":  [
         {
-            "name": "CDBDebug",
+            "name": "Debug",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceRoot}/bin/MediaPlayer/debug/out/MediaPlayer.exe",
@@ -17,7 +17,7 @@
             "preLaunchTask": "MediaPlayer Debug"
         },
         {
-            "name": "CDBRelease",
+            "name": "Release",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceRoot}/bin/MediaPlayer/release/out/MediaPlayer.exe",

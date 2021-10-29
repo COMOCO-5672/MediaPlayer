@@ -8,7 +8,7 @@
 			"command": "cmd",
 			"args": [
 				"/c",
-				"${workspaceRoot}/build_debug.cmd",
+				"${workspaceRoot}/build.cmd",
 				"debug"
 			],
 			"group": {
@@ -22,7 +22,7 @@
 			"command": "cmd",
 			"args": [
 				"/c",
-				"${workspaceRoot}/build_release.cmd",
+				"${workspaceRoot}/build.cmd",
 				"release"
 			],
 			"group": {

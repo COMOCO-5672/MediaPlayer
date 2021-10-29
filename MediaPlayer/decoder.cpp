@@ -9,7 +9,7 @@ decoder::~decoder()
 bool decoder::start()
 {
     AVFormatContext *pFormatCtx;    // 封装格式上下文结构体，也是统领全局的结构体，保存了视频文件封装 格式相关信息
-    int i = 0, videoindex;
+    unsigned int i = 0, videoindex;
     AVCodecContext  *pCodecCtx;     // 编码器上下文结构体，保存了视频（音频）编解码相关信息
     AVCodec         *pCodec;        // AVcodec是存储编解码器信息的结构体
     AVFrame *pFrame, *pFrameYUV;    // AVFrame是包含码流参数较多的结构体

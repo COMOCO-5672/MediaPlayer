@@ -6,16 +6,16 @@ CONFIG += c++11
 
 build_type =
 CONFIG(debug, debug|release) {
-    build_type = debug
+    build_type = $$PWD/../bin/MediaPlayer/debug/
 } else {
-    build_type = release
+    build_type = $$PWD/../bin/MediaPlayer/release/
 }
 
-DESTDIR     = $$build_type/out
-OBJECTS_DIR = $$build_type/obj
-MOC_DIR     = $$build_type/moc
-RCC_DIR     = $$build_type/rcc
-UI_DIR      = $$build_type/ui
+DESTDIR     = $${build_type}/out
+OBJECTS_DIR = $${build_type}/obj
+MOC_DIR     = $${build_type}/moc
+RCC_DIR     = $${build_type}/rcc
+UI_DIR      = $${build_type}/ui
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
