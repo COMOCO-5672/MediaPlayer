@@ -1,20 +1,23 @@
 #ifndef STREAM_BASE_H
 #define STREAM_BASE_H
 
-#include <string>
 #include "ffmpeg_util.h"
+#include <string>
 
-class stream_base
-{
-private:
+class stream_base {
+  private:
     /* data */
-public:
+  public:
     stream_base(/* args */);
     ~stream_base();
 
     bool open(AVFormatContext *avFmt);
 
-protected:
+    bool start(const std::map<int, AVBufferRef *> &idMapDevice);
+
+    void stop();
+
+  protected:
     virtual bool open_impl(AVFormatContext *avFmt) = 0;
 
     virtual bool close_impl() = 0;

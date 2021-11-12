@@ -10,7 +10,8 @@ bool stream_normal::close_impl() { return false; }
 
 bool stream_normal::start_impl(const std::map<int, AVBufferRef *> &idMapDevice)
 {
-  return false;
+    int i = 0;
+    return false;
 }
 
 bool stream_normal::stop_impl() { return false; }
