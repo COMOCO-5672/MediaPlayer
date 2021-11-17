@@ -1,5 +1,22 @@
 #include "decode_base.h"
 
+namespace{
+    AVPixelFormat getPixFmt(AVHWDeviceType type,AVCodec *pc)
+    {
+        if (!pc || type==AV_HWDEVICE_TYPE_NONE)
+        {
+            return AV_PIX_FMT_NONE;
+        }
+        AVPixelFormat pix = AV_PIX_FMT_NONE;
+        for (int i = 0; ; i++)
+        {
+            /* code */
+        }
+        
+        
+    }
+}
+
 DecoderBase::DecoderBase(AVStream *st)
     : codecId_(st->codecpar->codec_id), width_(st->codecpar->width), height_(st->codecpar->height)
 {
@@ -37,5 +54,37 @@ bool DecoderBase::openDecoder(AVStream *st, AVBufferRef *device)
         }
         codec_ = avcodec_find_decoder_by_name(codeName.c_str());
     } else {
+        codec_ = avcodec_find_decoder(st->codecpar->codec_id);
     }
+    if (!codec_) {
+        qWarning("index:%d,avcodec_find_decoder error",st->index);
+        goto err;
+    }
+    avctx_ = avcodec_alloc_context3(codec_); // 申请AVCodecContext
+    if (!avctx_)
+    {
+        avcodec_free_context(&avctx_);
+        qWarning("avcodec_alloc_context3 error");
+        goto err;
+    }
+    
+    auto ret = avcodec_parameters_to_context(avctx_,st->codecpar);
+    if (ret <= 0)
+    {
+        qWarning("avcodec_parameters_to_context error");
+        goto err;
+    }
+
+    if(device) {
+        auto phwdc= reinterpret_cast<AVHWDeviceContext*>(device->data);
+        if (!phwdc) {
+            qWarning("index:%s, AVHWDeviceContext change error",ret);
+            goto err;
+        }
+        auto pix = getPixFmt
+    }
+    
+    
+err:
+    return false;
 }

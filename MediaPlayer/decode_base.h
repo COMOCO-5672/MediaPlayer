@@ -11,6 +11,7 @@ class DecoderBase {
     int height_;
 
     AVCodec *codec_;
+    AVCodecContext *avctx_;
 
   public:
     DecoderBase(AVStream *st);
