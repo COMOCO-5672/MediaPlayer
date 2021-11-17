@@ -10,10 +10,19 @@ namespace{
         AVPixelFormat pix = AV_PIX_FMT_NONE;
         for (int i = 0; ; i++)
         {
-            /* code */
+            const AVCodecHWConfig *config = avcodec_get_hw_config(pc,i);
+            if (!config)
+            {
+                break;
+            }
+            if(config->methods & AV_CODEC_HW_CONFIG_METHOD_HW_DEVICE_CTX
+            && config->device_type==type)
+            {
+                pix = config->pix_fmt;
+                break;
+            }
         }
-        
-        
+        return pix;
     }
 }
 
@@ -81,7 +90,15 @@ bool DecoderBase::openDecoder(AVStream *st, AVBufferRef *device)
             qWarning("index:%s, AVHWDeviceContext change error",ret);
             goto err;
         }
-        auto pix = getPixFmt
+        auto pix = getPixFmt(phwdc->type,codec_);
+        if(pix == AV_PIX_FMT_NONE)
+        {
+            goto err;
+        }
+
+        avctx_->pix_fmt=pix;
+        
+
     }
     
     
