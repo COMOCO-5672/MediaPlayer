@@ -17,6 +17,8 @@ class DecoderBase {
     DecoderBase(AVStream *st);
     ~DecoderBase();
 
+    bool parsePacket(PacketPtr pkt);
+
     bool open(AVStream *st, AVBufferRef *device, AVDictionary *dict);
 
     bool createBuffer(AVBufferRef *device, int width, int height);
@@ -24,6 +26,10 @@ class DecoderBase {
     bool openDecoder(AVStream *st, AVBufferRef *device);
 
     bool closeDecoder();
+
+    bool receiveFrame();
+
+    void pushFrame(FramePtr fp);
 
   protected:
 };
