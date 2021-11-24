@@ -50,6 +50,13 @@ bool DecoderBase::open(AVStream *st, AVBufferRef *device, AVDictionary *dict)
             return false;
         }
     }
+
+    if (this->openDecoder(st, device)) {
+        dec_working_.store(true);
+        dec_work_thread = std::thread(&DecoderBase::work, this);
+        return true;
+    }
+    return false;
 }
 
 bool DecoderBase::createBuffer(AVBufferRef *device, int width, int height) { return false; }
@@ -121,6 +128,12 @@ err:
     return false;
 }
 
+void DecoderBase::work()
+{
+    while (dec_working_) {
+    }
+}
+
 bool DecoderBase::receiveFrame()
 {
     auto ret = 0;
@@ -137,3 +150,5 @@ bool DecoderBase::receiveFrame()
         }
     }
 }
+
+void DecoderBase::pushFrame(FramePtr fp) { frames_q_.push(fp); }

@@ -2,6 +2,7 @@
 #define DECODE_BASE_H
 
 #include "ffmpeg_util.h"
+#include <queue>
 
 class DecoderBase {
   private:
@@ -12,6 +13,14 @@ class DecoderBase {
 
     AVCodec *codec_;
     AVCodecContext *avctx_;
+
+    std::queue<FramePtr> frames_q_;
+
+    std::atomic_bool dec_working_ { false };
+    std::thread dec_work_thread;
+
+  public:
+    std::queue<PacketPtr> pkts_;
 
   public:
     DecoderBase(AVStream *st);
@@ -30,6 +39,8 @@ class DecoderBase {
     bool receiveFrame();
 
     void pushFrame(FramePtr fp);
+
+    void work();
 
   protected:
 };
