@@ -14,7 +14,7 @@ class DecoderBase {
     AVCodec *codec_;
     AVCodecContext *avctx_;
 
-    std::queue<FramePtr> frames_q_;
+    std::queue<FramePtr> frames_;
 
     std::atomic_bool dec_working_ { false };
     std::thread dec_work_thread;

@@ -3,14 +3,17 @@
 
 #include "stream_base.h"
 
-class stream
-{
-private:
-    /* data */
-public:
+class stream {
+  private:
+    AVFormatContext *pFmtCtx_ { nullptr };
+    AVDictionary *pFmtDict_ { nullptr };
+
+  public:
     stream();
     ~stream();
 
     bool openByUrl(const std::string url);
+
+    bool openInput(const char *url);
 };
 #endif

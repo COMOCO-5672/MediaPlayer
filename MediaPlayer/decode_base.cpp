@@ -31,16 +31,24 @@ DecoderBase::~DecoderBase() {}
 
 bool DecoderBase::parsePacket(PacketPtr pkt)
 {
-    int send_pkt = 0;
+
+    bool ret = true;
+    int send_ret = 0;
+    bool is_error_data = false;
     clock_t start_clock = clock();
 
     for (;;) {
-        send_pkt = avcodec_send_packet(avctx_, pkt.get());
-        if (send_pkt >= 0) {
+        send_ret = avcodec_send_packet(avctx_, pkt.get());
+        if (send_ret >= 0) {
 
-        } else if (send_pkt == AVERROR(EAGAIN)) {
+        } else if (send_ret == AVERROR(EAGAIN)) {
+            receiveFrame();
+            continue;
         }
+        break;
     }
+    ret = receiveFrame();
+    return ret;
 }
 
 bool DecoderBase::open(AVStream *st, AVBufferRef *device, AVDictionary *dict)
@@ -131,7 +139,24 @@ err:
 void DecoderBase::work()
 {
     while (dec_working_) {
+        PacketPtr pkt(std::move(pkts_.front()));
+        pkts_.pop();
+        if (!(pkt.get()->flags & AV_PKT_FLAG_KEY)) { // 如果第一帧为非关键帧
+            if (!frames_.empty()) {
+                frames_.front()->pts = pkt->pts;
+                frames_.front()->pkt_pts = pkt->pts;
+                frames_.front()->pkt_dts = pkt->dts;
+                frames_.front()->pkt_pos = pkt->pos;
+                frames_.front()->pkt_size = pkt->size;
+                frames_.front()->pkt_duration = pkt->duration;
+            }
+            continue;
+        }
+        if (!this->parsePacket(std::move(pkt))) {
+            continue;
+        }
     }
+    dec_working_.store(false);
 }
 
 bool DecoderBase::receiveFrame()
@@ -151,4 +176,4 @@ bool DecoderBase::receiveFrame()
     }
 }
 
-void DecoderBase::pushFrame(FramePtr fp) { frames_q_.push(fp); }
+void DecoderBase::pushFrame(FramePtr fp) { frames_.push(fp); }
