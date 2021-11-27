@@ -1,28 +1,28 @@
-#ifndef FFMPEG_UTIL_H
+﻿#ifndef FFMPEG_UTIL_H
 #define FFMPEG_UTIL_H
 
+#include <QDebug>
+#include <atomic>
+#include <memory>
 #include <mutex>
-#include "qdebug"
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include <libavutil/avutil.h>
-#include <libswscale/swscale.h>
 #include <libavutil/imgutils.h>
 #include <libavutil/log.h>
 #include <libavutil/time.h>
+#include <libswscale/swscale.h>
 
 #ifdef __cplusplus
 }
 #endif
 
-struct FD
-{
+struct FD {
     FD() {}
     FD(const FD &) {}
     FD(FD &&) {}
@@ -31,8 +31,7 @@ struct FD
     void operator()(AVFrame *p) const;
 };
 
-struct PD
-{
+struct PD {
     PD() {}
     PD(const PD &) {}
     PD(PD &&) {}
@@ -41,18 +40,16 @@ struct PD
     void operator()(AVPacket *p) const;
 };
 
-class FramePtr : public std::unique_ptr<AVFrame, FD>
-{
-public:
+class FramePtr : public std::unique_ptr<AVFrame, FD> {
+  public:
     explicit FramePtr(AVFrame *p = nullptr);
     FramePtr(FramePtr &&_R);
     FramePtr(const FramePtr &_R) = delete;
     FramePtr clone();
 };
 
-class PacketPtr : public std::unique_ptr<AVPacket, PD>
-{
-public:
+class PacketPtr : public std::unique_ptr<AVPacket, PD> {
+  public:
     explicit PacketPtr(AVPacket *p = nullptr);
     PacketPtr(PacketPtr &&_R);
     PacketPtr(const PacketPtr &_R) = delete;

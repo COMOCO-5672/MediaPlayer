@@ -2,7 +2,6 @@
 #define STREAM_BASE_H
 
 #include "decode_base.h"
-#include "ffmpeg_util.h"
 #include <string>
 
 class stream_base {

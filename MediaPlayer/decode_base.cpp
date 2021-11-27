@@ -1,4 +1,5 @@
 #include "decode_base.h"
+#include <memory>
 
 namespace {
 AVPixelFormat getPixFmt(AVHWDeviceType type, AVCodec *pc)
@@ -174,6 +175,7 @@ bool DecoderBase::receiveFrame()
             return false;
         }
     }
+    return true;
 }
 
-void DecoderBase::pushFrame(FramePtr fp) { frames_.push(fp); }
+void DecoderBase::pushFrame(FramePtr fp) { frames_.push(std::move(fp)); }

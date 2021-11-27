@@ -14,7 +14,4 @@ void MainWindow::on_pushButton_clicked()
   if (text.isEmpty())
     return;
   // start play rtsp
-
-
-
 }
