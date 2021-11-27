@@ -3,6 +3,7 @@
 
 #include "ffmpeg_util.h"
 #include <queue>
+#include <atomic>
 
 class DecoderBase {
   private:

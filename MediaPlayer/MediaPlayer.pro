@@ -27,18 +27,22 @@ SOURCES += \
     decoder.cpp \
     main.cpp \
     mainwindow.cpp \
+    ffmpeg_util.cpp \
     openglrenderwidget.cpp  \
     stream_base.cpp \
     stream_normal.cpp    \
-    stream.cpp
+    stream.cpp  \
+    decode_base.cpp 
 
 HEADERS += \
     decoder.h \
     mainwindow.h    \
+    ffmpeg_util.h   \
     openglrenderwidget.h    \
     stream_base.h   \
     stream_normal.h  \
-    stream.h
+    stream.h    \
+    decode_base.h
 
 FORMS += \
     mainwindow.ui

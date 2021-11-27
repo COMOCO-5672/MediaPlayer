@@ -1,7 +1,7 @@
 #ifndef FFMPEG_UTIL_H
 #define FFMPEG_UTIL_H
 
-#include "mutex"
+#include <mutex>
 #include "qdebug"
 
 #ifdef __cplusplus
