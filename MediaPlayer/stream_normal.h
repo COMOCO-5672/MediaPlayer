@@ -3,24 +3,24 @@
 
 #include "stream_base.h"
 class stream_normal : public stream_base {
-private:
-  AVStream *st_{nullptr};
-  std::vector<DecoderBase*> decs_{nullptr};
-public:
-  stream_normal(/* args */);
-  ~stream_normal();
+  private:
+    AVStream *st_ { nullptr };
+    std::vector<DecoderBase *> decs_ { nullptr };
 
-protected:
-  bool open_impl(AVFormatContext *avFmt) override;
+  public:
+    stream_normal(/* args */);
+    ~stream_normal();
 
-  bool close_impl() override;
+  protected:
+    bool open_impl(AVFormatContext *avFmt) override;
 
-  bool start_impl(const std::map<int, AVBufferRef *> &idMapDevice) override;
+    bool close_impl() override;
 
-  bool stop_impl() override;
+    bool start_impl(const std::map<int, AVBufferRef *> &idMapDevice) override;
 
-private:
-  bool find_stream(AVFormatContext *avfmt);
+    bool stop_impl() override;
 
+  private:
+    bool find_stream(AVFormatContext *avfmt);
 };
 #endif

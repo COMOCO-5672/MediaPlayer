@@ -1,9 +1,9 @@
 #ifndef STREAM_BASE_H
 #define STREAM_BASE_H
 
+#include "decode_base.h"
 #include "ffmpeg_util.h"
 #include <string>
-#include "decode_base.h"
 
 class stream_base {
   private:

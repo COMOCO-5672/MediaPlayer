@@ -1,26 +1,23 @@
 #include "stream.h"
 
-static stream_base *getStreamBase(AVInputFormat *ifmt)
-{
-    return new stream_normal();
-}
+static stream_base *getStreamBase(AVInputFormat *ifmt) { return new stream_normal(); }
 
 stream::stream() {}
 
 stream::~stream() {}
 
-bool stream::openByUrl(const std::string url) { 
-    if(!openInput(url.c_str())){
+bool stream::openByUrl(const std::string url)
+{
+    if (!openInput(url.c_str())) {
         return false;
     }
-    pStream_= getStreamBase(pFmtCtx_->iformat);
-    if (!pStream_->open(pFmtCtx_))
-    {
+    pStream_ = getStreamBase(pFmtCtx_->iformat);
+    if (!pStream_->open(pFmtCtx_)) {
         // TODO:Close
         return false;
     }
 
-    if( pStream_->start(idMapDevice_)){
+    if (pStream_->start(idMapDevice_)) {
         // TODO::CLOSE
     }
 
@@ -47,8 +44,4 @@ bool stream::openInput(const char *url)
     return true;
 }
 
-bool stream::closeInput()
-{
-    return false;
-}
-
+bool stream::closeInput() { return false; }

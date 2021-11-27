@@ -7,9 +7,9 @@ class stream {
   private:
     AVFormatContext *pFmtCtx_ { nullptr };
     AVDictionary *pFmtDict_ { nullptr };
-    stream_base *pStream_{nullptr};
+    stream_base *pStream_ { nullptr };
 
-    std::map<int,AVBufferRef *> idMapDevice_;
+    std::map<int, AVBufferRef *> idMapDevice_;
 
   public:
     stream();
