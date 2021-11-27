@@ -2,10 +2,10 @@
 #define STREAM_NORMAL_H
 
 #include "stream_base.h"
-
 class stream_normal : public stream_base {
 private:
-  /* data */
+  AVStream *st_{nullptr};
+  std::vector<DecoderBase*> decs_{nullptr};
 public:
   stream_normal(/* args */);
   ~stream_normal();
@@ -20,6 +20,7 @@ protected:
   bool stop_impl() override;
 
 private:
-  bool find_stream();
+  bool find_stream(AVFormatContext *avfmt);
+
 };
 #endif

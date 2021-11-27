@@ -3,6 +3,7 @@
 
 #include "ffmpeg_util.h"
 #include <string>
+#include "decode_base.h"
 
 class stream_base {
   private:
