@@ -1,4 +1,4 @@
-#include "decode_base.h"
+﻿#include "decode_base.h"
 #include <memory>
 
 namespace {
