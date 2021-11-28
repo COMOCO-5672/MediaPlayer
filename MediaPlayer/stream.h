@@ -2,6 +2,7 @@
 #define STREAM_H
 
 #include "stream_normal.h"
+#include <atomic>
 
 class stream {
   private:
@@ -10,6 +11,9 @@ class stream {
     stream_base *pStream_ { nullptr };
 
     std::map<int, AVBufferRef *> idMapDevice_;
+
+    std::atomic_bool recv_working_ { false };
+    std::thread working_thread_;
 
   public:
     stream();
@@ -20,5 +24,7 @@ class stream {
     bool openInput(const char *url);
 
     bool closeInput();
+
+    void recvPkt();
 };
 #endif

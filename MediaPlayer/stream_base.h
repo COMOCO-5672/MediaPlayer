@@ -17,6 +17,8 @@ class stream_base {
 
     void stop();
 
+    virtual bool pushPacket(PacketPtr pt) = 0;
+
   protected:
     virtual bool open_impl(AVFormatContext *avFmt) = 0;
 

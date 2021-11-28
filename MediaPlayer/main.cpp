@@ -94,7 +94,6 @@ int main(int argc, char *argv[])
     }
     int x = parser.value(xOption).toInt();
     int y = parser.value(yOption).toInt();
-    qDebug() << "end";
     QString color = parser.value(colorOption);
 
     MainWindow w;

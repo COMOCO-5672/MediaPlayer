@@ -1,15 +1,17 @@
-#ifndef STREAM_NORMAL_H
+﻿#ifndef STREAM_NORMAL_H
 #define STREAM_NORMAL_H
 
 #include "stream_base.h"
 class stream_normal : public stream_base {
   private:
     AVStream *st_ { nullptr };
-    std::vector<DecoderBase *> decs_ { nullptr };
+    std::vector<DecoderBase *> decs_;
 
   public:
     stream_normal(/* args */);
     ~stream_normal();
+
+    bool pushPacket(PacketPtr pkt) override;
 
   protected:
     bool open_impl(AVFormatContext *avFmt) override;

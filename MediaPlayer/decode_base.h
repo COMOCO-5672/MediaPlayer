@@ -2,8 +2,8 @@
 #define DECODE_BASE_H
 
 #include "ffmpeg_util.h"
-#include <queue>
 #include <atomic>
+#include <queue>
 
 class DecoderBase {
   private:
@@ -42,6 +42,8 @@ class DecoderBase {
     void pushFrame(FramePtr fp);
 
     void work();
+
+    void pushPacket(PacketPtr pkt);
 
   protected:
 };

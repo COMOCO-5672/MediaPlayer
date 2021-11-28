@@ -17,11 +17,13 @@ bool stream::openByUrl(const std::string url)
         return false;
     }
 
-    if (pStream_->start(idMapDevice_)) {
+    if (!pStream_->start(idMapDevice_)) {
         // TODO::CLOSE
+        return false;
     }
-
-    return false;
+    recv_working_.store(true);
+    working_thread_ = std::thread(&stream::recvPkt, this);
+    return true;
 }
 
 bool stream::openInput(const char *url)
@@ -45,3 +47,18 @@ bool stream::openInput(const char *url)
 }
 
 bool stream::closeInput() { return false; }
+
+void stream::recvPkt()
+{
+    while (recv_working_) {
+        PacketPtr pkt(av_packet_alloc());
+        if (pkt == nullptr) {
+            recv_working_.store(false);
+        }
+        int ret = av_read_frame(pFmtCtx_, pkt.get());
+        if (ret != 0) {
+            continue;
+        }
+        pStream_->pushPacket(std::move(pkt));
+    }
+}

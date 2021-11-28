@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "stream.h"
+#include <QLineEdit>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QString>

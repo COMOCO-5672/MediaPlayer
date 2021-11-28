@@ -246,6 +246,7 @@ Makefile: MediaPlayer.pro C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\win32-msvc\q
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\resolve_config.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\exclusive_builds_post.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\default_post.prf \
+		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\win32\console.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\qml_debug.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\precompile_header.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\warn_on.prf \
@@ -256,7 +257,6 @@ Makefile: MediaPlayer.pro C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\win32-msvc\q
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\uic.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\qmake_use.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\file_copies.prf \
-		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\win32\windows.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\testcase_targets.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\exceptions.prf \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\yacc.prf \
@@ -264,8 +264,7 @@ Makefile: MediaPlayer.pro C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\win32-msvc\q
 		MediaPlayer.pro \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\Qt5Widgets.prl \
 		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\Qt5Gui.prl \
-		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\Qt5Core.prl \
-		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\qtmain.prl
+		C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\Qt5Core.prl
 	$(QMAKE) -o Makefile MediaPlayer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\spec_pre.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\common\angle.conf:
@@ -436,6 +435,7 @@ C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\win32\default_pre.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\resolve_config.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\exclusive_builds_post.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\default_post.prf:
+C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\win32\console.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\qml_debug.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\precompile_header.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\warn_on.prf:
@@ -446,7 +446,6 @@ C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\win32\opengl.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\uic.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\qmake_use.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\file_copies.prf:
-C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\win32\windows.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\testcase_targets.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\exceptions.prf:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\mkspecs\features\yacc.prf:
@@ -455,7 +454,6 @@ MediaPlayer.pro:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\Qt5Widgets.prl:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\Qt5Gui.prl:
 C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\Qt5Core.prl:
-C:\Qt\Qt5.12.5\5.12.5\msvc2015_64\lib\qtmain.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile MediaPlayer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
 

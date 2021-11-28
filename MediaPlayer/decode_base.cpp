@@ -101,9 +101,12 @@ bool DecoderBase::openDecoder(AVStream *st, AVBufferRef *device)
         qWarning("avcodec_alloc_context3 error");
         goto err;
     }
+    if (!st->codecpar->extradata) {
+        qWarning("no extradata");
+    }
 
     auto ret = avcodec_parameters_to_context(avctx_, st->codecpar);
-    if (ret <= 0) {
+    if (ret < 0) {
         qWarning("avcodec_parameters_to_context error");
         goto err;
     }
@@ -119,16 +122,10 @@ bool DecoderBase::openDecoder(AVStream *st, AVBufferRef *device)
             goto err;
         }
 
-        avctx_->pix_fmt = pix;
         avctx_->sw_pix_fmt = pix;
         avctx_->hw_device_ctx = av_buffer_ref(device);
         avctx_->extra_hw_frames = 10;
-    } else {
-        avctx_->pix_fmt = AVPixelFormat(st->codecpar->format);
-        avctx_->height = st->codecpar->height;
-        avctx_->width = st->codecpar->width;
     }
-    avctx_->pkt_timebase = st->time_base;
     if (!CH_FFMPEG(avcodec_open2(avctx_, codec_, nullptr))) {
         goto err;
     }
@@ -140,6 +137,9 @@ err:
 void DecoderBase::work()
 {
     while (dec_working_) {
+        if (pkts_.empty())
+            continue;
+
         PacketPtr pkt(std::move(pkts_.front()));
         pkts_.pop();
         if (!(pkt.get()->flags & AV_PKT_FLAG_KEY)) { // 如果第一帧为非关键帧
@@ -179,3 +179,5 @@ bool DecoderBase::receiveFrame()
 }
 
 void DecoderBase::pushFrame(FramePtr fp) { frames_.push(std::move(fp)); }
+
+void DecoderBase::pushPacket(PacketPtr pkt) { pkts_.push(std::move(pkt)); }

@@ -1,4 +1,4 @@
-#include "stream_normal.h"
+﻿#include "stream_normal.h"
 
 stream_normal::stream_normal(/* args */) {}
 
@@ -6,7 +6,6 @@ stream_normal::~stream_normal() {}
 
 bool stream_normal::open_impl(AVFormatContext *avFmt)
 {
-
     if (!find_stream(avFmt)) {
         return false;
     }
@@ -22,8 +21,7 @@ bool stream_normal::start_impl(const std::map<int, AVBufferRef *> &idMapDevice)
     if (idMapDevice.empty()) {
         decs_.at(0)->open(st_, nullptr, nullptr);
     }
-
-    return false;
+    return true;
 }
 
 bool stream_normal::stop_impl() { return false; }
@@ -42,4 +40,10 @@ bool stream_normal::find_stream(AVFormatContext *avfmt)
         return false;
     }
     return true;
+}
+
+bool stream_normal::pushPacket(PacketPtr pkt)
+{
+    decs_.front()->pushPacket(std::move(pkt));
+    return false;
 }

@@ -14,10 +14,16 @@ void MainWindow::on_pushButton_clicked()
         QMessageBox::warning(this, "warning", QString::fromLocal8Bit("输入内容为空"));
         return;
     }
-    qDebug("url:%s", text);
+    qDebug("url:%s", text.toStdString().c_str());
+
+    pStream_ = new stream;
+    if (!pStream_->openByUrl(text.toStdString().c_str())) {
+        delete pStream_;
+        pStream_ = nullptr;
+        qWarning("play error");
+    }
+    return;
     if (!pStream_) {
-        pStream_ = new stream;
-        pStream_->openByUrl(text.toStdString());
     } else {
         // close
         // pStream_->closeInput();
