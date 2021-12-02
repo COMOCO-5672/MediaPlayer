@@ -181,3 +181,10 @@ bool DecoderBase::receiveFrame()
 void DecoderBase::pushFrame(FramePtr fp) { frames_.push(std::move(fp)); }
 
 void DecoderBase::pushPacket(PacketPtr pkt) { pkts_.push(std::move(pkt)); }
+
+FramePtr DecoderBase::getFrame()
+{
+    FramePtr ret = std::move(frames_.front());
+    frames_.pop();
+    return ret;
+}

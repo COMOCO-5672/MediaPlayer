@@ -45,6 +45,8 @@ class DecoderBase {
 
     void pushPacket(PacketPtr pkt);
 
+    FramePtr getFrame();
+
   protected:
 };
 
