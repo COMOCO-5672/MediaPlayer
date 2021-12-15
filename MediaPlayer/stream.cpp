@@ -62,3 +62,9 @@ void stream::recvPkt()
         pStream_->pushPacket(std::move(pkt));
     }
 }
+
+void stream::render()
+{
+    while (m_bRenderW_) {
+        }
+}

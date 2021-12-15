@@ -15,6 +15,8 @@ class stream {
     std::atomic_bool recv_working_ { false };
     std::thread working_thread_;
 
+    std::atomic_bool m_bRenderW_ { false };
+
   public:
     stream();
     ~stream();
@@ -26,5 +28,7 @@ class stream {
     bool closeInput();
 
     void recvPkt();
+
+    void render();
 };
 #endif

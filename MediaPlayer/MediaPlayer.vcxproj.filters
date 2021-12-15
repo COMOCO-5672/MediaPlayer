@@ -96,10 +96,10 @@
     
     
     
-    <CustomBuild Include="D:\vsfile\1.github\MediaPlayer\bin\MediaPlayer\debug\moc\moc_predefs.h.cbt">
+    <CustomBuild Include="F:\demoTest\1. GitHubPro\MediaPlayer\bin\MediaPlayer\debug\moc\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="D:\vsfile\1.github\MediaPlayer\bin\MediaPlayer\release\moc\moc_predefs.h.cbt">
+    <CustomBuild Include="F:\demoTest\1. GitHubPro\MediaPlayer\bin\MediaPlayer\release\moc\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     
