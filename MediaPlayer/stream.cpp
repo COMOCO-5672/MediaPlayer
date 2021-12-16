@@ -66,5 +66,6 @@ void stream::recvPkt()
 void stream::render()
 {
     while (m_bRenderW_) {
+        
         }
 }
